@@ -9,5 +9,5 @@ module.exports = merge(common, {
         filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [new HtmlWebpackPlugin({ title: 'sample react typescript', template: 'index.html' })],
+    plugins: [new HtmlWebpackPlugin({ title: 'sample react typescript', template: 'src/index.html' })],
 })
