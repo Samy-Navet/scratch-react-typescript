@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -16,14 +17,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
-                use: [
-                    'style-loader', 
-                    { loader: 'css-loader', options: { modules: true } },
-                    'sass-loader',
-                ]
-            },
-            {
                 test: /\.html$/,
                 use: ['html-loader']
             },
@@ -34,6 +27,7 @@ module.exports = {
         ]
     }, 
     plugins: [
+        new HtmlWebpackPlugin({ title: 'sample react typescript', template: 'src/index.html' }),
         new CopyWebpackPlugin({
             patterns: [
               { from: "public/assets", to: "assets" },

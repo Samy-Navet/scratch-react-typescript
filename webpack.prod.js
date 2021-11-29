@@ -1,6 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -10,5 +10,17 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    plugins: [new HtmlWebpackPlugin({ title: 'sample react typescript', template: 'src/index.html' })],
+    plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css'})],
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader, 
+                    { loader: 'css-loader', options: { modules: true } },
+                    'sass-loader',
+                ]
+            },
+        ]
+    },
 })
