@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import './main.css';
+import styles from './app.css';
 
 const App = () => {
     return (
-        <div>
+        <div className={styles.randomClass} >
             index
         </div>
     )
