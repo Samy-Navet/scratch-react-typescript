@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import './main.css';
-import styles from './app.css';
+import './main.scss';
+import styles from './app.scss';
 import image from '../public/assets/logo-webpack.png';
 
 const App = () => {
