@@ -2,9 +2,12 @@ const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
         assetModuleFilename: 'assets/[name].[hash][query][ext]',
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".scss", ".css"]
     },
     module: {
         rules: [
@@ -14,6 +17,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: ['ts-loader'],
             },
             {
                 test: /\.html$/,
